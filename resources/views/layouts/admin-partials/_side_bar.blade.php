@@ -32,6 +32,17 @@
                     <span>Documentation</span></a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="tables.html">
+                    <i class="fa fa-solid fa-check-double"></i>
+                    <span>Approval Request</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="tables.html">
+                    <i class="fa fa-solid fa-users"></i>
+                    <span>Users</span></a>
+            </li>
 
 
 
