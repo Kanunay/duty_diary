@@ -12,7 +12,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="/home">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -20,26 +20,26 @@
 
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="{{ route('diaries.index') }}">
                     <i class="fas fa-solid fa-book-open"></i>
                     <span>Diaries</span></a>
             </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="{{ route('documentation.index') }}">
                     <i class="fas fa-solid fa-camera-retro"></i>
                     <span>Documentation</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="{{ route('approval_request.index') }}">
                     <i class="fa fa-solid fa-check-double"></i>
                     <span>Approval Request</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="tables.html">
+                <a class="nav-link" href="{{ route('users.index') }}">
                     <i class="fa fa-solid fa-users"></i>
                     <span>Users</span></a>
             </li>

@@ -1,7 +1,12 @@
 <?php
 
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\DiariesController;
+use App\Http\Controllers\DocumentationsController;
+use App\Http\Controllers\ApprovalRequestsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +26,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// Route::resource('admin/diaries', DiariesController::class);
+
+
+Route::resource('diaries', DiariesController::class);
+Route::resource('documentation', DocumentationsController::class);
+Route::resource('approval_request', ApprovalRequestsController::class);
+Route::resource('users', UsersController::class);
