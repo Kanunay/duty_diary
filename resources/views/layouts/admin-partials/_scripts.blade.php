@@ -14,3 +14,6 @@
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+    {{-- public scripts --}}
+    <script src="{{ asset('js/sb-admin-2.js') }}"></script>
+    <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>

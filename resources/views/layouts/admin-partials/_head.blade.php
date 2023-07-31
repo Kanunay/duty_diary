@@ -17,4 +17,9 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
+        <!-- Include Bootstrap CSS -->
+        <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
+        <!-- Add your custom CSS file -->
+        <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+
 </head>
