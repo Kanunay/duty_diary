@@ -27,7 +27,7 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="inputPassword4">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Password" required name="password" value="{{ $user->password }}">
+                <input type="text" class="form-control" id="password" placeholder="Password" required name="password" value="{{ $user->password }}">
             </div>
             @method('PUT')
         </div>
