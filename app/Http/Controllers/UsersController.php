@@ -88,7 +88,11 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+        // Find the user by ID
+        $user = User::findOrFail($id);
+
+        // Pass the $user variable to your view for editing
+        return view('admin.users.edit', compact('user'));
     }
 
     /**
@@ -100,7 +104,30 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Find the user by ID
+        $user = User::findOrFail($id);
+
+        // Validate the form data for updating the user
+        $request->validate([
+            'name' => 'nullable|string|max:255',
+            'email' => 'required|email|unique:users,email,' . $id, // Add "unique" rule with ignoring the current user's email
+            'password' => 'nullable|min:8', // Make the 'password' field nullable, meaning it's not required for updating
+            'role_id' => 'nullable|required|in:1,2,3',
+        ]);
+
+        // Update the user attributes with the new data
+        $user->name = $request->input('name', $user->name); // If 'name' is not provided, keep the existing name
+        $user->email = $request->input('email');
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->input('password')); // Only update password if it's provided
+        }
+        $user->role_id = $request->input('role_id');
+
+        // Save the updated user to the database
+        $user->save();
+
+        // Redirect to the index page or show a success message
+        return redirect()->route('users.index')->with('success', 'User updated successfully!');
     }
 
     /**

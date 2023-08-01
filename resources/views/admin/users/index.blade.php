@@ -35,7 +35,7 @@
                               <th scope="row">{{ $loop->index + 1 }}</th>
                               <td>
                                   <button type="submit" class="btn btn-danger">Delete</button>
-                                  <button type="submit" class="btn btn-success ms-1 mx-3"> Edit </button>
+                                  <a href="{{ route('users.edit',$user->id) }}"  type="submit" class="btn btn-success ms-1 mx-3"> Edit </a>
                               </td>
                               <td>{{ $user->name }}</td>
                               <td>{{ $user->email }}</td>
