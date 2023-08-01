@@ -33,13 +33,29 @@
                           @foreach ($users as $user)
                           <tr>
                               <th scope="row">{{ $loop->index + 1 }}</th>
+                              
                               <td>
-                                  <button type="submit" class="btn btn-danger">Delete</button>
-                                  <a href="{{ route('users.edit',$user->id) }}"  type="submit" class="btn btn-success ms-1 mx-3"> Edit </a>
+                                  <!-- Form to trigger the delete action -->
+                                  <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline">
+                                      @csrf
+                                      @method('DELETE')
+                                      <button type="submit" class="btn btn-danger">Delete</button>
+                                  </form>
+                                  
+                                  <a href="{{ route('users.edit', $user->id) }}" class="btn btn-success ms-1 mx-3">Edit</a>
                               </td>
                               <td>{{ $user->name }}</td>
                               <td>{{ $user->email }}</td>
-                              <td>{{ $user->role_id }}</td>
+                              <td>
+                                @if($user->role_id === 1)
+                                  <span class="btn badge-danger">Administrator</span>
+                                @elseif($user->role_id === 2)
+                                  <span class="btn badge-warning">Supervisor</span>
+                                @else
+                                  <span class="btn badge-secondary">Trainee</span>
+                                @endif
+                                
+                              </td>
                           </tr>
                           @endforeach
                       </tbody>
@@ -51,5 +67,4 @@
   </div>
 </section>
 
-  
 @endsection
