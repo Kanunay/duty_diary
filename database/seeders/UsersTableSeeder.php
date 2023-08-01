@@ -13,9 +13,10 @@ class UsersTableSeeder extends Seeder
         // Generate random data for the users table
         $users = [
             [
+                'name' => 'admin user',
                 'email' => 'admin@gmail.com',
-                'role_id' => 1,
                 'password' => Hash::make('gwapo_ako'),
+                'role_id' => 1,
                 'remember_token' => null,
                 'created_at' => now(),
                 'updated_at' => now(),

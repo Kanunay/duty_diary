@@ -1,53 +1,37 @@
-
 @extends('layouts.admin')
 
 @section("content")
-
-    <div class="container"><form>
+<div class="container">
+    <form action="{{ route('users.store') }}" method="POST">
+        <h1><strong>New User</strong></h1>
+        @csrf
         <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="inputEmail4">Email</label>
-            <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-          </div>
-          <div class="form-group col-md-6">
-            <label for="inputPassword4">Password</label>
-            <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="inputAddress">Address</label>
-          <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-        </div>
-        <div class="form-group">
-          <label for="inputAddress2">Address 2</label>
-          <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+            <div class="form-group col-md-8">
+                <label for="inputEmail4">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputState">Role</label>
+                <select id="inputState" class="form-control" name="role_id" id="role" required>
+                    <option selected disabled>Choose...</option>
+                    <option value="1">Admin</option>
+                    <option value="2">Supervisor</option>
+                    <option value="3">Trainee</option>
+                </select>
+            </div>
         </div>
         <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="inputCity">City</label>
-            <input type="text" class="form-control" id="inputCity">
-          </div>
-          <div class="form-group col-md-4">
-            <label for="inputState">State</label>
-            <select id="inputState" class="form-control">
-              <option selected>Choose...</option>
-              <option>...</option>
-            </select>
-          </div>
-          <div class="form-group col-md-2">
-            <label for="inputZip">Zip</label>
-            <input type="text" class="form-control" id="inputZip">
-          </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="Email" required name="email">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputPassword4">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Password" required name="password">
+            </div>
         </div>
-        <div class="form-group">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck">
-            <label class="form-check-label" for="gridCheck">
-              Check me out
-            </label>
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Sign in</button>
-      </form></div>
-
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="{{ route('users.index') }}" class="btn btn-secondary btn">Cancel</a>
+    </form>
+</div>
 @endsection
