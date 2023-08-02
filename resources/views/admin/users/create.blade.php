@@ -34,4 +34,9 @@
         <a href="{{ route('users.index') }}" class="btn btn-secondary btn">Cancel</a>
     </form>
 </div>
+
+@error('email')
+    <div class="alert alert-danger mt-3">{{ $message }}</div>
+@enderror
+
 @endsection

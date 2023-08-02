@@ -20,7 +20,7 @@
     {{-- sweet alert --}}
     <script src="{{ asset('sweetalert/package.json') }}"></script>
     <script src="{{ asset('sweetalert/dist/sweetalert2.all.js') }}"></script>
-    <script src="{{ asset('sweetalert/dist/sweetalert2.css') }}"></script>
+
 
     {{-- sweetalert --}}
     <script>
@@ -58,5 +58,17 @@
                 }
             });
         }
+    </script>
+    
+    <script>
+        @if(session('success'))
+            Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: '{{ session('success') }}',
+                showConfirmButton: false,
+                timer: 2500
+            });
+        @endif
     </script>
     

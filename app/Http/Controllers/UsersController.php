@@ -68,6 +68,7 @@ class UsersController extends Controller
     
         // Redirect to the index page or show a success message
         return redirect()->route('users.index')->with('success', 'User created successfully!');
+
     }
     
 
