@@ -17,3 +17,46 @@
     {{-- public scripts --}}
     <script src="{{ asset('js/sb-admin-2.js') }}"></script>
     <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+    {{-- sweet alert --}}
+    <script src="{{ asset('sweetalert/package.json') }}"></script>
+    <script src="{{ asset('sweetalert/dist/sweetalert2.all.js') }}"></script>
+    <script src="{{ asset('sweetalert/dist/sweetalert2.css') }}"></script>
+
+    {{-- sweetalert --}}
+    <script>
+        function deleteUser(userId) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                // icon: 'warning',
+                imageUrl: "{{ asset("you-sure-ba.png") }}",
+                imageHeight: 300,
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // If user confirms, submit the form for deletion
+                    const form = document.createElement('form');
+                    form.method = 'POST';
+                    form.action = '{{ route('users.destroy', '') }}/' + userId;
+                    form.style.display = 'none';
+    
+                    const csrfInput = document.createElement('input');
+                    csrfInput.name = '_token';
+                    csrfInput.value = '{{ csrf_token() }}';
+                    form.appendChild(csrfInput);
+    
+                    const methodInput = document.createElement('input');
+                    methodInput.name = '_method';
+                    methodInput.value = 'DELETE';
+                    form.appendChild(methodInput);
+    
+                    document.body.appendChild(form);
+                    form.submit();
+                }
+            });
+        }
+    </script>
+    

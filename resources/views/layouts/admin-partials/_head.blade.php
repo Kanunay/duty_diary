@@ -21,5 +21,6 @@
         <link href="{{ asset('css/sb-admin-2.css') }}" rel="stylesheet">
         <!-- Add your custom CSS file -->
         <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('sweetalert/dist/sweetalert2.css') }}" rel="stylesheet">
 
 </head>

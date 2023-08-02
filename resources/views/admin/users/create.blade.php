@@ -26,8 +26,8 @@
                 <input type="email" class="form-control" id="email" placeholder="Email" required name="email">
             </div>
             <div class="form-group col-md-6">
-                <label for="inputPassword4">Password</label>
-                <input type="password" class="form-control" id="password" placeholder="Password" required name="password">
+                <label for="inputPassword4">Temporary Password</label>
+                <input type="text" class="form-control" id="password" placeholder="tem-password" required name="password">
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>

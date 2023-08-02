@@ -32,6 +32,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::resource('diaries', DiariesController::class);
+Route::resource('documentations', DocumentationsController::class);
 Route::resource('documentation', DocumentationsController::class);
 Route::resource('approval_request', ApprovalRequestsController::class);
 Route::resource('users', UsersController::class);

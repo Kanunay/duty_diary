@@ -27,7 +27,7 @@
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('documentation.index') }}">
+                <a class="nav-link" href="{{ route('documentations.index') }}">
                     <i class="fas fa-solid fa-camera-retro"></i>
                     <span>Documentation</span></a>
             </li>

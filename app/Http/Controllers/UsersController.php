@@ -143,8 +143,7 @@ class UsersController extends Controller
 
     // Delete the user
     $user->delete();
-
-    // Redirect to the index page or show a success message
+    
     return redirect()->route('users.index')->with('success', 'User deleted successfully!');
 }
 }

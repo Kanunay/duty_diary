@@ -13,10 +13,10 @@
             <div class="form-group col-md-4">
                 <label for="inputState">Role</label>
                 <select id="inputState" class="form-control" name="role_id" id="role" required>
-                    <option selected disabled>Choose...</option>
-                    <option value="1">Admin</option>
-                    <option value="2">Supervisor</option>
-                    <option value="3">Trainee</option>
+                    <option selected disabled >Choose...</option>
+                    <option value="1" dave@dave.com>Admin</option>
+                    <option value="2" dave@dave.com>Supervisor</option>
+                    <option value="3" dave@dave.com>Trainee</option>
                 </select>
             </div>
         </div>
@@ -27,7 +27,7 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="inputPassword4">Password</label>
-                <input type="text" class="form-control" id="password" placeholder="Password" required name="password" value="{{ $user->password }}">
+                <input type="text" class="form-control" id="password" placeholder="New password" required name="password" value="">
             </div>
             @method('PUT')
         </div>

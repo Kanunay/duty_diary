@@ -3,83 +3,66 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Documentation;
+use Illuminate\Support\Facades\Auth;
 
 class DocumentationsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view('admin.documentation.index');
-        
+        $documentations = Documentation::all();
+        return view('admin.documentation.index', compact('documentations'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('admin.documentation.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'caption' => 'required|string',
+        ]);
+    
+        $imagePath = $request->file('image')->store('images', 'public');
+    
+        $documentation = new Documentation([
+            'author_id' => Auth::id(),
+            'image' => $imagePath,
+            'caption' => $request->input('caption'),
+        ]);
+    
+        $documentation->save();
+    
+        return redirect()->route('documentation.index')
+            ->with('success', 'Documentation created successfully!');
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        // Not implementing the "show" method for this example
+        // You can add it if you need to display a single documentation item.
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        // Not implementing the "edit" method for this example
+        // You can add it if you need to edit a single documentation item.
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        // Not implementing the "update" method for this example
+        // You can add it if you need to update a single documentation item.
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $documentation = Documentation::findOrFail($id);
+        $documentation->delete();
+
+        return redirect()->route('documentations.index')->with('success', 'Documentation deleted successfully!');
+        
     }
 }

@@ -2,7 +2,7 @@
 
 @section("content")
 
-<section class="vh-100" style="background-color: #eee;">
+<section class="vh" style="background-color: #eee;">
   <div class="row d-flex justify-content-center align-items-center h-200">
       <div class="col col-lg-11 col-x2-7">
           <div class="card rounded-3">
@@ -36,11 +36,8 @@
                               
                               <td>
                                   <!-- Form to trigger the delete action -->
-                                  <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline">
-                                      @csrf
-                                      @method('DELETE')
-                                      <button type="submit" class="btn btn-danger">Delete</button>
-                                  </form>
+                                  <button class="btn btn-danger" onclick="deleteUser({{ $user->id }})">Delete</button>
+
                                   
                                   <a href="{{ route('users.edit', $user->id) }}" class="btn btn-success ms-1 mx-3">Edit</a>
                               </td>
