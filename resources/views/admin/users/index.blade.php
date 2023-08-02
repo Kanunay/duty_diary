@@ -58,10 +58,20 @@
                       </tbody>
                   </table>
 
+                  <!-- Success message -->
+                  @if(session('success'))
+                    <div class="alert alert-success">{{ session('success') }}</div>
+                    @elseif (session('message'))
+                    <strong>Success!</strong> {{ $user->name }}'s information has been successfully updated.
+                    @else
+
+                  @endif
+
               </div>
           </div>
       </div>
   </div>
+  
 </section>
 
 @endsection

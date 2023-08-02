@@ -18,10 +18,12 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::all();
-
-    // Pass the $users variable to your view
-    return view('admin.users.index', compact('users'));
+        $totalUsers = User::count(); // Get the count of users
+    
+        // Pass the $users and $totalUsers variables to your view
+        return view('admin.users.index', compact('users', 'totalUsers'));
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -138,7 +140,7 @@ class UsersController extends Controller
      */
     public function destroy($id)
 {
-    // Find the user by ID
+    // Find the user by ID  
     $user = User::findOrFail($id);
 
     // Delete the user
