@@ -20,25 +20,25 @@ class DocumentationsController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'caption' => 'required|string',
-        ]);
-    
-        $imagePath = $request->file('image')->store('images', 'public');
-    
-        $documentation = new Documentation([
-            'author_id' => Auth::id(),
-            'image' => $imagePath,
-            'caption' => $request->input('caption'),
-        ]);
-    
-        $documentation->save();
-    
-        return redirect()->route('documentation.index')
-            ->with('success', 'Documentation created successfully!');
-    }
+{
+    $request->validate([
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'caption' => 'required|string',
+    ]);
+
+    $imagePath = $request->file('image')->store('images', 'public');
+
+    $documentation = new Documentation([
+        'author_id' => Auth::user()->id,
+        'image' => $imagePath,
+        'caption' => $request->input('caption'),
+    ]);
+
+    $documentation->save();
+
+    return redirect()->route('documentation.index')
+        ->with('success', 'Documentation created successfully!');
+}
     public function show($id)
     {
         // 

@@ -1,9 +1,6 @@
 <head>
    
 
-   
-
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -27,15 +24,7 @@
         <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
         <link href="{{ asset('sweetalert/dist/sweetalert2.css') }}" rel="stylesheet">
 
-    {{-- dropify --}}
-     {{-- Dropify --}}
-     {{-- <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700,900|Roboto+Condensed:400,300,700' rel='stylesheet' type='text/css'>
-     <link rel="stylesheet" href="{{ asset("dist/css/demo.css") }}">
-     <link rel="stylesheet" href="{{ asset("dist/css/dropify.min.css") }}">
-
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-     <script src="{{ asset("dist/js/dropify.min.js") }}"></script> --}}
-
+    
      <link rel="stylesheet" href="{{ asset('css/dropify.css') }}">   
      <link rel="stylesheet" href="{{ asset("dist/css/demo.css") }}">
      <link rel="stylesheet" href="{{ asset("dist/css/dropify.min.css") }}">        
