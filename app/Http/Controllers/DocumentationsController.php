@@ -41,21 +41,18 @@ class DocumentationsController extends Controller
     }
     public function show($id)
     {
-        // Not implementing the "show" method for this example
-        // You can add it if you need to display a single documentation item.
+        // 
     }
 
     public function edit($id)
     {
-        // Not implementing the "edit" method for this example
-        // You can add it if you need to edit a single documentation item.
+        //
     }
 
     public function update(Request $request, $id)
     {
-        // Not implementing the "update" method for this example
-        // You can add it if you need to update a single documentation item.
-    }
+        //
+    } 
 
     public function destroy($id)
     {
