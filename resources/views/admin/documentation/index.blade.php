@@ -3,7 +3,7 @@
 
 
 <div class="container">
-    <form action="{{ route('documentations.store') }}" method="post" enctype="multipart/form-data">
+    {{-- <form action="{{ route('documentations.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="card-body">
             <input type="file" class="dropify" data-height="150" data-allowed-file-extensions="jpg jpeg png gif" name="image" />
@@ -12,8 +12,11 @@
         <div class="card-footer">
             <input type="submit" value="Save">
         </div>
-    </form>
-
+    </form> --}}
+    {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">
+        Add New Documentation
+    </button> --}}
+    @include('admin.documentation.partials._modal')
 
 
     <div class="mt-5">
@@ -32,5 +35,9 @@
         </div>
     </div>
 </div>
+
 @include('admin.documentation.partials._dropify')
+
+
+
 @endsection

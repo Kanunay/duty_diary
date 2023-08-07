@@ -10,7 +10,7 @@ class DocumentationsController extends Controller
 {
     public function index()
     {
-        $documentations = Documentation::all();
+        $documentations = Documentation::orderBy('created_at', 'desc')->get();
         return view('admin.documentation.index', compact('documentations'));
     }
 
