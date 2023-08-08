@@ -36,4 +36,6 @@
      {{-- CSS lightbox --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
 
+    {{-- tailwind --}}
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>

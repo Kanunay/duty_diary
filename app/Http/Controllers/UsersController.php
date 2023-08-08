@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User; // Make sure to import the correct User model namespace
+use App\Models\User; 
 use Illuminate\Support\Facades\Hash;
 
 use view;

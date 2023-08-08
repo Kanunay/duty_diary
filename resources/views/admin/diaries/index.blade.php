@@ -14,7 +14,7 @@
                               Diaries
                           </div>
                           <div class="col-md-6 col-12 text-right">
-                              <a href="" class="btn btn-sm btn-primary ">Add User</a>
+                              <a href="" class="btn btn-sm btn-primary text-white">Add User</a>
                           </div>
                       </div>
                   </div>
