@@ -5,7 +5,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg"> <!-- Use modal-lg for a larger modal -->
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="addModalLabel">Add Documentation</h5>
@@ -15,8 +15,8 @@
                 @csrf
                 <div class="modal-body">
                     <div class="card-body">
-                        <input type="file" class="dropify" data-height="150" data-allowed-file-extensions="jpg jpeg png gif" name="image" />
-                        <input type="text" name="caption" id="caption">
+                        <input type="file" class="dropify" style="height: 10vh;" data-allowed-file-extensions="jpg jpeg png gif" name="image" />
+                        <input type="text" name="caption" data-max-file-size="2M" style="height: 10vh;" id="caption" placeholder="Caption" class="container my-2">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -27,4 +27,4 @@
         </div>
     </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+

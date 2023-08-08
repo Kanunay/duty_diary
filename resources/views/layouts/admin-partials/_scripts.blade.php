@@ -24,6 +24,8 @@
     <script src="{{ asset('sweetalert/package.json') }}"></script>
     <script src="{{ asset('sweetalert/dist/sweetalert2.all.js') }}"></script>
 
+    {{-- _modal --}}
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 
     {{-- sweetalert --}}
     <script>

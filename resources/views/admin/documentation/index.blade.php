@@ -3,19 +3,7 @@
 
 
 <div class="container">
-    {{-- <form action="{{ route('documentations.store') }}" method="post" enctype="multipart/form-data">
-        @csrf
-        <div class="card-body">
-            <input type="file" class="dropify" data-height="150" data-allowed-file-extensions="jpg jpeg png gif" name="image" />
-            <input type="text" name="caption" id="caption">
-        </div>
-        <div class="card-footer">
-            <input type="submit" value="Save">
-        </div>
-    </form> --}}
-    {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">
-        Add New Documentation
-    </button> --}}
+    
     @include('admin.documentation.partials._modal')
 
 
@@ -30,7 +18,7 @@
                         <h5 class="card-title">{{ $documentation->caption }}</h5>
                     </div>
                 </div>
-            </div>
+            </div>                                                                                              
             @endforeach
         </div>
     </div>
