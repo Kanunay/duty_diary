@@ -27,6 +27,9 @@
     {{-- _modal --}}
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 
+     {{-- script Light box --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    
     {{-- sweetalert --}}
     <script>
         function deleteUser(userId) {

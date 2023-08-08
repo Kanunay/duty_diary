@@ -12,13 +12,15 @@
         <div class="row">
             @foreach($documentations as $documentation)
             <div class="col-md-4 mb-3">
-                <div class="card">
-                    <img src="{{ asset('storage/' . $documentation->image) }}" class="card-img-top" alt="Documentation Image">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $documentation->caption }}</h5>
+                <a href="{{ asset('storage/' . $documentation->image) }}" data-lightbox="image-gallery">
+                    <div class="card">
+                        <img src="{{ asset('storage/' . $documentation->image) }}" class="card-img-top" alt="Documentation Image">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $documentation->caption }}</h5>
+                        </div>
                     </div>
-                </div>
-            </div>                                                                                              
+                </a>
+            </div>
             @endforeach
         </div>
     </div>

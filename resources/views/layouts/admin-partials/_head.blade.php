@@ -33,5 +33,7 @@
      <!-- Dropify Scripts -->
      <script src="{{ asset('js/dropify.js') }}"></script>
 
+     {{-- CSS lightbox --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
 
 </head>
