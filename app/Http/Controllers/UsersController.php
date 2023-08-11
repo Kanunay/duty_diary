@@ -18,9 +18,7 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::all();
-        $totalUsers = User::count(); // Get the count of users
-    
-        // Pass the $users and $totalUsers variables to your view
+        $totalUsers = User::count(); 
         return view('admin.users.index', compact('users', 'totalUsers'));
     }
     
@@ -46,7 +44,7 @@ class UsersController extends Controller
         // dd($request->all());
         // Validate the form data
         $request->validate([
-            'name' => 'nullable|string|max:255', // Make the 'name' field nullable in validation rules
+            'name' => 'nullable|string|max:255', 
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8',
             'role_id' => 'nullable|required|in:1,2,3',
