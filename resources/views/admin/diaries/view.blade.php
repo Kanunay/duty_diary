@@ -1,28 +1,31 @@
 @extends('layouts.admin')
 
 @section('content')
-<div class="container mx-auto px-4 py-8">
-    <div class="bg-white p-6 rounded-lg shadow-md">
-        <h1 class="text-xl font-semibold mb-4">{{ $diary->supervisor->name }}</h1>
-        <p class="mb-4">{{ $diary->plan_today }}</p>
+<div class="container">
+    <div class="bg-white p-6 rounded-lg shadow-md p-3">
+        <h2 class="text-left pt-1 ">Supervisor Name : {{ $diary->supervisor->name }}</h2>
         
-        <h1 class="text-xl font-semibold mb-4">End for Today</h1>
-        <p class="mb-4">{{ $diary->end_today }}</p>
+        <h2 class="text-left pt-1">EOD REPORT User : {{ auth()->user()->name }}</h2>
+
+        <h2 class="text-left pt-1">Plan for today :</h2>
+        <p class="text-left">{{ $diary->plan_today }}</p>
         
-        <h1 class="text-xl font-semibold mb-4">Plan for Tomorrow</h1>
-        <p class="mb-4">{{ $diary->plan_tomorrow }}</p>
+        <h2 class="text-left pt-1">End for Today :</h2>
+        <p class="text-left">{{ $diary->end_today }}</p>
         
-        <h1 class="text-xl font-semibold mb-4">Roadblocks</h1>
-        <p class="mb-4">{{ $diary->roadblocks }}</p>
+        <h2 class="text-left pt-1">Plan for Tomorrow :</h2>
+        <p class="text-left">{{ $diary->plan_tomorrow }}</p>
         
-        <h1 class="text-xl font-semibold mb-4">Summary</h1>
-        <p class="mb-4">{{ $diary->summary }}</p>
+        <h2 class="text-left pt-1">Roadblocks :</h2>
+        <p class="text-left">{{ $diary->roadblocks }}</p>
         
-        <h1 class="text-xl font-semibold mb-4">Status</h1>
-        <p class="mb-4">{{ $diary->status === 1 ? 'Active' : 'Inactive' }}</p>
+        <h2 class="text-left pt-1">Summary :</h2>
+        <p class="text-left">{{ $diary->summary }}</p>
         
-        <h1 class="text-xl font-semibold mb-4">Created At</h1>
-        <p class="mb-4">{{ $diary->created_at->format('M d, Y') }}</p>
+        <h2 class="text-left pt-1">Status : {{ $diary->status === 2 ? 'Pending' : 'Approved' }}</h2>
+        
+        <h2 class="text-left pt-1">Created At : {{ $diary->created_at->format('M d, Y') }}</h2>
     </div>
 </div>
+
 @endsection
