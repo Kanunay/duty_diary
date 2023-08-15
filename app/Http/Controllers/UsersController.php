@@ -18,12 +18,13 @@ class UsersController extends Controller
         if ($request->ajax()) {
             $data = User::latest()->get();
             return Datatables::of($data)
+            
                     ->addIndexColumn()
+                    
                     ->addColumn('action', function($row){
-   
-                           $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
-     
-                            return $btn;
+                        $btn = ' <a href="'.route("users.edit", $row->id).'" class="btn btn-success btn-sm ms-1 text-white">Edit</a>';
+                        $btn .= ' <button class="btn btn-danger btn-sm" onclick="deleteUser('.$row->id.')">Delete</button>';
+                        return $btn;
                     })
                     ->rawColumns(['action'])
                     ->make(true);
@@ -31,6 +32,7 @@ class UsersController extends Controller
       
         return view('admin.users.index');
     }
+    
 
     public function create()
     {
