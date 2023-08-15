@@ -26,10 +26,9 @@
                                     </select>
                                 </div>
                                 <div class="block">
-                                    <label for="status" class="block">Status</label>
-                                    <select id="status" class="form-control" name="status" required>
-                                        <option value="1">Active</option>
-                                        <option value="2">Inactive</option>
+                                    <label for="status" class="block" hidden>Status</label>
+                                    <select id="status" class="form-control" name="status" value="1" hidden>
+                                        <option value="1">Pending</option>
                                     </select>
                                 </div>
                             </div>
@@ -59,7 +58,7 @@
                             </div>
                             <div class="mt-4">
                                 <button type="submit" class="btn btn-primary">Submit</button>
-                                <a href="{{ route('diaries.index') }}" class="btn btn-secondary ml-2">Cancel</a>
+                                <a href="{{ route('diaries.index') }}" class="btn btn-secondary ml-2 text-white">Cancel</a>
                             </div>
                         </form>
                     </div>

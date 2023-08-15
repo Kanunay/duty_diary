@@ -32,9 +32,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 Route::resource('diaries', DiariesController::class);
+
+// Route::get('diaries', ['uses'=>'App\Http\Controllers\DiariesController@index', 'as'=>'diaries.index']);
+
 Route::resource('documentations', DocumentationsController::class);
 Route::resource('documentation', DocumentationsController::class);
 Route::resource('approval_request', ApprovalRequestsController::class);
 Route::resource('users', UsersController::class);
 
-Route::get('users', ['uses'=>'App\Http\Controllers\UsersController@index', 'as'=>'users.index']);
+// Route::get('users', ['uses'=>'App\Http\Controllers\UsersController@index', 'as'=>'users.index']);

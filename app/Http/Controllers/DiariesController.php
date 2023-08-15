@@ -14,46 +14,20 @@ class DiariesController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            // If it's an AJAX request from DataTables
-            if (Auth::user()->role_id == 1) {
-                $diaries = Diary::all();
-            } else if (Auth::user()->role_id == 2) {
-                $supervisorId = Auth::user()->id;
-    
-                $diaries = Diary::where(function ($query) use ($supervisorId) {
-                    $query->where('supervisor_id', $supervisorId)
-                        ->orWhere('author_id', $supervisorId);
-                })->get();
-            } else {
-                $diaries = Diary::where('author_id', '=', Auth::user()->id)->get();
-            }
-    
-            return DataTables::of($diaries)
-                ->addIndexColumn()
-                ->addColumn('actions', function ($data) {
-                    $actions = '<a href="' . route('diaries.show', $data->id) . '" class="btn btn-sm btn-info">View</a>';
-                    // Add other action buttons if needed
-                    return $actions;
-                })
-                ->addColumn('title', function ($data) {
-                    $date = $data->created_at->format('F j, Y');
-                    $author = User::where('id', '=', $data->author_id)->first();
-                    if (Auth::user()->role_id == 1 || Auth::user()->role_id == 2) {
-                        return $title = 'EOD Report for ' . $date . ' by ' . $author->name;
-                    } else {
-                        return $title = 'EOD Report for ' . $date;
-                    }
-                })
-                ->addColumn('status', function ($data) {
-                    // ... (your status column logic)
-                })
-                ->rawColumns(['actions', 'title', 'status'])
-                ->make(true);
+            $data = Diary::latest()->get();
+            return Datatables::of($data)
+                    ->addIndexColumn()
+                    ->addColumn('action', function($row){
+   
+                        $btn = '<a href="' . route('diaries.show', $row->id) . '" class="btn btn-sm btn-info">View</a>';
+                        
+                        return $btn;
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
         }
-    
-        // For the initial page load
-        $diaries = Diary::all(); // Fetch all diaries for the view
-        return view('admin.diaries.index')->with('diaries', $diaries);
+      
+        return view('admin.diaries.index');
     }
     
 
