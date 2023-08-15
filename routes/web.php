@@ -36,3 +36,5 @@ Route::resource('documentations', DocumentationsController::class);
 Route::resource('documentation', DocumentationsController::class);
 Route::resource('approval_request', ApprovalRequestsController::class);
 Route::resource('users', UsersController::class);
+
+Route::get('users', ['uses'=>'App\Http\Controllers\UsersController@index', 'as'=>'users.index']);

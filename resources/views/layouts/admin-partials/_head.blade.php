@@ -37,5 +37,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
 
     {{-- tailwind --}}
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('css/styles.css') }}"> --}}
+    {{-- datatables --}}
+    <link  href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
 </head>
