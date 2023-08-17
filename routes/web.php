@@ -38,6 +38,9 @@ Route::resource('diaries', DiariesController::class);
 Route::resource('documentations', DocumentationsController::class);
 Route::resource('documentation', DocumentationsController::class);
 Route::resource('approval_request', ApprovalRequestsController::class);
+
+Route::post('diaries/changeStatus', [ApprovalRequestsController::class, 'changeStatus'])->name('diaries.changeStatus');
+
 Route::resource('users', UsersController::class);
 
 // Route::get('users', ['uses'=>'App\Http\Controllers\UsersController@index', 'as'=>'users.index']);

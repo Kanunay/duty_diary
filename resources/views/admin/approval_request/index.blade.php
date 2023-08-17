@@ -1,5 +1,105 @@
 @extends('layouts.admin')
 
-@section("content")
-<h1>Approval-Request</h1>
+@section('content')
+
+<section class="vh" style="background-color: #eee;">
+    <div class="row d-flex justify-content-center align-items-center h-200">
+        <div class="col col-lg-11 col-x2-7">
+            <div class="card rounded-3">
+                <div class="card-body p-4">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6 col-12 p-3">
+                                <h2><i class="fas fa-solid fa-users no-decoration mx-1"></i> Approval Request</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="table mb-4">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Actions</th>
+                                <th scope="col">Date Made</th>
+                                <th scope="col">EOD report by:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($diaries as $diary)
+                            <tr>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>
+                                    <button class="btn btn-primary change-status-btn" data-id="{{ $diary->id }}">Change Status</button>
+
+
+                                </td>
+                                <td>{{ $diary->created_at }}</td>
+                                <td>
+                                    @if ($user = $users->find($diary->author_id))
+                                        {{ $user->name }}
+                                    @else
+                                        User Not Found
+                                    @endif
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+
+                    <!-- Success message -->
+                    @if(session('success'))
+                    <div class="alert alert-success">{{ session('success') }}</div>
+                    @elseif (session('message'))
+            
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    $(document).ready(function () {
+        $('.change-status-btn').click(function () {
+            var diaryId = $(this).data('id');
+            
+            $.ajax({
+                url: "{{ route('diaries.changeStatus') }}",
+                method: "POST",
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    id: diaryId
+                },
+                success: function (response) {
+                    if (response.success) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Diary Entry Approved!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+
+                        // You can also update the UI here if needed
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: 'Something went wrong!',
+                        });
+                    }
+                },
+                error: function () {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Something went wrong!',
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+
+
+
 @endsection

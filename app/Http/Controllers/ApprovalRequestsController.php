@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+
+use App\Models\Diary;
+
 use Illuminate\Http\Request;
 
 class ApprovalRequestsController extends Controller
@@ -11,10 +15,36 @@ class ApprovalRequestsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.approval_request.index');
+        // Fetch data from diaries table
+        $diaries = Diary::latest()->get();
+
+        // Fetch data from users table
+        $users = User::all();
+
+
+        return view('admin.approval_request.index', compact('diaries', 'users'));
     }
+
+        public function changeStatus(Request $request)
+    {
+        $id = $request->input('id');
+        
+        $diary = Diary::find($id);
+
+        if (!$diary) {
+            return response()->json(['success' => false], 404);
+        }
+
+        // Update the status to 2
+        $diary->status = 2;
+        $diary->save();
+
+        return response()->json(['success' => true], 200);
+    }
+
+
 
     /**
      * Show the form for creating a new resource.
