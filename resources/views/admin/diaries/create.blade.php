@@ -35,26 +35,26 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                                 <div class="block">
                                     <label for="plan_today" class="block">Plan for Today</label>
-                                    <textarea class="form-control" id="plan_today" name="plan_today" required></textarea>
+                                    <textarea class="form-control blocky" id="plan_today" name="plan_today" required></textarea>
                                 </div>
                                 <div class="block">
                                     <label for="end_today" class="block">End for Today</label>
-                                    <textarea class="form-control" id="end_today" name="end_today" required></textarea>
+                                    <textarea class="form-control blocky" id="end_today" name="end_today" required></textarea>
                                 </div>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                                 <div class="block">
                                     <label for="plan_tomorrow" class="block">Plan for Tomorrow</label>
-                                    <textarea class="form-control" id="plan_tomorrow" name="plan_tomorrow" required></textarea>
+                                    <textarea class="form-control blocky" id="plan_tomorrow" name="plan_tomorrow" required></textarea>
                                 </div>
                                 <div class="block">
                                     <label for="roadblocks" class="block">Roadblocks</label>
-                                    <textarea class="form-control" id="roadblocks" name="roadblocks" required></textarea>
+                                    <textarea class="form-control blocky" id="roadblocks" name="roadblocks" required></textarea>
                                 </div>
                             </div>
                             <div class="mt-4">
                                 <label for="summary" class="block">Summary</label>
-                                <textarea class="form-control" id="summary" name="summary" required></textarea>
+                                <textarea class="form-control blocky" id="summary" name="summary" required></textarea>
                             </div>
                             <div class="mt-4">
                                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -68,14 +68,30 @@
         </div>
     </div>
 </section>
-<script src="https://cdn.tiny.cloud/1/hu2fw8wnu6qmmnt4psa35k6m9vd149tibr6az6p86o12887h/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+<!-- include libraries(jQuery, bootstrap) -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<!-- include summernote css/js -->
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 <script>
-    tinymce.init({
-        selector: 'textarea', // Select all textareas
-        height: 300, // Set the height of the editor
-        plugins: 'autolink lists link image charmap print preview hr anchor pagebreak',
-        toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image'
+    $('.blocky').summernote({
+      placeholder: 'Text Area',
+      tabsize: 2,
+      height: 150,
+      toolbar: [
+        ['style', ['style']],
+        ['font', ['bold', 'underline', 'clear']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['table', ['table']],
+        ['insert', ['link', 'picture', 'video']],
+        ['view', ['fullscreen', 'codeview', 'help']]
+      ]
     });
-</script>
+  </script>
 
 @endsection
