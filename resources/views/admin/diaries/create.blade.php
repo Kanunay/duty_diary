@@ -68,5 +68,14 @@
         </div>
     </div>
 </section>
+<script src="https://cdn.tiny.cloud/1/hu2fw8wnu6qmmnt4psa35k6m9vd149tibr6az6p86o12887h/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+    tinymce.init({
+        selector: 'textarea', // Select all textareas
+        height: 300, // Set the height of the editor
+        plugins: 'autolink lists link image charmap print preview hr anchor pagebreak',
+        toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image'
+    });
+</script>
 
 @endsection
