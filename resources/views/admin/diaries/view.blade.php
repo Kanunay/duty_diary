@@ -1,30 +1,37 @@
 @extends('layouts.admin')
+<head>
+    <style>
+        .becontent {
+            margin-left: 10px;
+        }
+    </style>
+</head>
 
 @section('content')
 <div class="container">
-    <div class="bg-white p-6 rounded-lg shadow-md p-3">
-        <h2 class="text-left pt-1 ">Supervisor Name : {{ $diary->supervisor->name }}</h2>
+    <div class="bg-white p-6 rounded-lg shadow-md p-3 card">
+        <h3 class="text-left pt-1 card-header">Supervisor Name : {{ $diary->supervisor->name }}</h3>
         
-        <h2 class="text-left pt-1">EOD REPORT User : {{ auth()->user()->name }}</h2>
+        <h3 class="text-left pt-1 card-body mt-3">EOD REPORT User : {{ auth()->user()->name }}</h3>
 
-        <h2 class="text-left pt-1">Plan for today :</h2>
-        <p class="text-left">{{ $diary->plan_today }}</p>
+        <h3 class="text-left pt-1 card-body">Plan for today :</h3>
+        <div class="text-left card-body">{!! $diary->plan_today !!}</div>
+ 
+        <h3 class="text-left pt-1 card-body">End for Today :</h3>
+        <div class="text-left card-body">{!! $diary->end_today !!}</div>
         
-        <h2 class="text-left pt-1">End for Today :</h2>
-        <p class="text-left">{{ $diary->end_today }}</p>
+        <h3 class="text-left pt-1 card-body">Plan for Tomorrow :</h3>
+        <div class="text-left card-body">{!! $diary->plan_tomorrow !!}</div>
         
-        <h2 class="text-left pt-1">Plan for Tomorrow :</h2>
-        <p class="text-left">{{ $diary->plan_tomorrow }}</p>
+        <h3 class="text-left pt-1 card-body">Roadblocks :</h3>
+        <div class="text-left card-body">{!! $diary->roadblocks !!}</div>
         
-        <h2 class="text-left pt-1">Roadblocks :</h2>
-        <p class="text-left">{{ $diary->roadblocks }}</p>
+        <h3 class="text-left pt-1 card-body">Summary :</h3>
+        <div class="text-left card-body">{!! $diary->summary !!}</div>
         
-        <h2 class="text-left pt-1">Summary :</h2>
-        <p class="text-left">{{ $diary->summary }}</p>
+        <h3 class="text-left pt-1 card-body">Status: <span class="{{ $diary->status === 1 ? 'text-warning' : 'text-success' }}">{{ $diary->status === 1 ? 'Pending' : 'Approved' }}</span></h3>
         
-        <h2 class="text-left pt-1">Status : {{ $diary->status === 2 ? 'Pending' : 'Approved' }}</h2>
-        
-        <h2 class="text-left pt-1">Created At : {{ $diary->created_at->format('M d, Y') }}</h2>
+        <h3 class="text-left pt-1 card-footer">Created At : {{ $diary->created_at->format('M d, Y') }}</h3>
     </div>
 </div>
 
