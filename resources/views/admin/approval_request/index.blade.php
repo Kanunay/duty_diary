@@ -26,23 +26,27 @@
                         </thead>
                         <tbody>
                             @foreach ($diaries as $diary)
-                            <tr>
-                                <td>{{ $loop->iteration }}</td>
-                                <td>
-                                    <button class="btn btn-primary change-status-btn" data-id="{{ $diary->id }}">Change Status</button>
-
-
-                                </td>
-                                <td>{{ $diary->created_at }}</td>
-                                <td>
-                                    @if ($user = $users->find($diary->author_id))
-                                        {{ $user->name }}
-                                    @else
-                                        User Not Found
-                                    @endif
-                                </td>
-                            </tr>
+                                @if ($diary->status === 1)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>
+                                            <button class="btn btn-success change-status-btn" data-id="{{ $diary->id }}">Approve</button>
+                                        </td>
+                                        <td><h5>End of day report: {{ $diary->created_at->format('F d, Y') }}</h5></td>
+                                        <td>
+                                            @if ($user = $users->find($diary->author_id))
+                                                {{ $user->name }}
+                                            @else
+                                                User Not Found
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @elseif ($diary->status === 2)
+                                    {{-- Do nothing or display alternative content for status 2 --}}
+                                @endif
                             @endforeach
+
+                        {{-- {{ $diary->status }} --}}
                         </tbody>
                     </table>
 
@@ -78,7 +82,8 @@
                             timer: 1500
                         });
 
-                        // You can also update the UI here if needed
+                        // Refresh the page
+                        location.reload();
                     } else {
                         Swal.fire({
                             icon: 'error',
@@ -98,6 +103,7 @@
         });
     });
 </script>
+
 
 
 
