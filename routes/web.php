@@ -1,9 +1,10 @@
 <?php
 
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UsersController;
+use App\Http\Middleware\CheckRouteAccess;
 use App\Http\Controllers\DiariesController;
 use App\Http\Controllers\DocumentationsController;
 use App\Http\Controllers\ApprovalRequestsController;
@@ -23,24 +24,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/no_permission', function(){
+    return view('no_permission');
+})->name('no_permission');
+
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-// Route::resource('admin/diaries', DiariesController::class);
-
-
-Route::resource('diaries', DiariesController::class);
-
-// Route::get('diaries', ['uses'=>'App\Http\Controllers\DiariesController@index', 'as'=>'diaries.index']);
-
-Route::resource('documentations', DocumentationsController::class);
-Route::resource('documentation', DocumentationsController::class);
-Route::resource('approval_request', ApprovalRequestsController::class);
-
-Route::post('diaries/changeStatus', [ApprovalRequestsController::class, 'changeStatus'])->name('diaries.changeStatus');
-
-Route::resource('users', UsersController::class);
-
-// Route::get('users', ['uses'=>'App\Http\Controllers\UsersController@index', 'as'=>'users.index']);
+Route::middleware('checkRouteAccess')->group(function () {
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    Route::resource('diaries', DiariesController::class);
+    Route::resource('documentations', DocumentationsController::class);
+    Route::resource('documentation', DocumentationsController::class);
+    Route::resource('approval_request', ApprovalRequestsController::class);
+    Route::post('diaries/changeStatus', [ApprovalRequestsController::class, 'changeStatus'])->name('diaries.changeStatus');
+    Route::resource('users', UsersController::class);
+});

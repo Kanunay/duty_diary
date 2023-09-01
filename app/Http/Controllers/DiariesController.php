@@ -39,7 +39,6 @@ class DiariesController extends Controller
 
     public function store(Request $request)
     {
-        try {
             $validatedData = $request->validate([
                 'plan_today' => 'required',
                 'end_today' => 'required',
@@ -53,9 +52,6 @@ class DiariesController extends Controller
             $diary = Diary::create($validatedData + ['author_id' => Auth::user()->id]);
 
             return redirect()->route('diaries.index')->with('success', 'Diary entry created successfully!');
-        } catch (ValidationException $e) {
-            return redirect()->back()->withErrors($e->errors())->withInput();
-        }
     }
 
     /**
