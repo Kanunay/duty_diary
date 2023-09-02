@@ -31,6 +31,7 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
                                             <button class="btn btn-success change-status-btn" data-id="{{ $diary->id }}">Approve</button>
+                                            <a href="{{ route('diaries.show', $diary->id) }}" class="btn btn-info ">View</a>
                                         </td>
                                         <td><h5>End of day report: {{ $diary->created_at->format('F d, Y') }}</h5></td>
                                         <td>

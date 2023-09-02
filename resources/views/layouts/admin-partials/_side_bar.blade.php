@@ -32,19 +32,31 @@
                     <span>Documentation</span></a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('approval_request.index') }}">
-                    <i class="fa fa-solid fa-check-double"></i>
-                    <span>Approval Request</span></a>
-            </li>
+            @if ( Auth::user()->role_id == 1)
 
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('users.index') }}">
-                    <i class="fa fa-solid fa-users"></i>
-                    <span>Users</span></a>
-            </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('approval_request.index') }}">
+                        <i class="fa fa-solid fa-check-double"></i>
+                        <span>Approval Request</span></a>
+                </li>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('users.index') }}">
+                        <i class="fa fa-solid fa-users"></i>
+                        <span>Users</span></a>
+                </li>
+                
+            @elseif ( Auth::user()->role_id == 2)
 
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('approval_request.index') }}">
+                        <i class="fa fa-solid fa-check-double"></i>
+                        <span>Approval Request</span></a>
+                </li>
+
+            @else
+                {{-- Oi what are ya inspecting here for? --}}
+            @endif
 
         </ul>
         <!-- End of Sidebar -->
