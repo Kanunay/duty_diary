@@ -33,6 +33,7 @@ Auth::routes();
 Route::middleware('checkRouteAccess')->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::resource('diaries', DiariesController::class);
+    Route::get('/print/diaries/{id}',[App\Http\Controllers\DiariesController::class, 'print'])->name('diaries.print');
     Route::resource('documentations', DocumentationsController::class);
     Route::resource('documentation', DocumentationsController::class);
     Route::resource('approval_request', ApprovalRequestsController::class);

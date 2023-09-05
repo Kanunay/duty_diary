@@ -20,6 +20,8 @@ class DiariesController extends Controller
                     ->addColumn('action', function($row){
    
                         $btn = '<a href="' . route('diaries.show', $row->id) . '" class="btn btn-sm btn-info">View</a>';
+                         $btn .= '<a href="' . route('diaries.print', $row->id) . '" class="btn btn-sm btn-warning text-white ml-2">Print</a>'; 
+
                         
                         return $btn;
                     })
@@ -66,6 +68,15 @@ class DiariesController extends Controller
 
         return view('admin.diaries.view', compact('diary'));
     }
+
+    public function print($id)
+    {
+        $diary = Diary::with('supervisor')->findOrFail($id);
+
+        return view('admin.diaries.print', compact('diary'));
+    }
+
+
 
     /**
      * Show the form for editing the specified resource.

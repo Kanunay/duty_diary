@@ -88,6 +88,7 @@ class CheckRouteAccess
                 'diaries.store',
                 'diaries.destroy',
                 'diaries.update',
+                'diaries.print',
 
                 'documentations.index',
                 'documentations.create',
